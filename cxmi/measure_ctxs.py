@@ -3,6 +3,8 @@
 import argparse
 
 import torch
+import nltk
+nltk.download('punkt_tab')
 from nltk.tokenize import sent_tokenize
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 

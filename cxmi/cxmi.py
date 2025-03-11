@@ -55,6 +55,12 @@ def get_output_probs(
     """Compute the output probabilities of the output text given the input text."""
     input_dict = tokenizer(input_text, return_tensors="pt")  # <1, in-len>
     output_dict = tokenizer(output_text, return_tensors="pt")  # <1, out-len>
+    print("Input Dict: ", input_dict)
+    print("Output Dict: ", output_dict)
+    # print out tokenized words
+    print("Input Tokens: ", tokenizer.convert_ids_to_tokens(input_dict["input_ids"][0]))
+    print("Output Tokens: ", tokenizer.convert_ids_to_tokens(output_dict["input_ids"][0]))
+
     input_dict["labels"] = output_dict["input_ids"]
     input_dict = {k: v.to(model.device) for k, v in input_dict.items()}
 
